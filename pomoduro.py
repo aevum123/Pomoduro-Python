@@ -17,6 +17,8 @@ class MyForm(QMainWindow):
         self.ui.actionColor.triggered.connect(self.menuBackgroundMethod)
         self.ui.actionExit.triggered.connect(self.exitMethod)
         self.ui.pushButton5.clicked.connect(self.fiveMinutes)
+        self.ui.pushButton10.clicked.connect(self.tenMinutes)
+        self.ui.pushButton15.clicked.connect(self.fifteenMinutes)
         # add code here to connect the pushButton widgets to your methods.
         # for this first project three empty methods are already created.
         # you are responsible for connecting the clicked signal from your widgets
@@ -33,6 +35,12 @@ class MyForm(QMainWindow):
             self.setPalette(pal)
     
     def fiveMinutes(self):
+        pass
+    
+    def tenMinutes(self):
+        pass
+    
+    def fifteenMinutes(self):
         pass
 
     def exitMethod(self):
