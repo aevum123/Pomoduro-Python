@@ -11,11 +11,8 @@ class MyForm(QMainWindow):
     # constructor for this MyForm class 
     def __init__(self):
         super().__init__()   # calls the constructor of the QDialog class that is inherited
-        
-        # Change 'gui_template.ui' to the .ui file you created with Qt Designer
-        # or rename the provided gui_template.ui to your own file and change name
-        # the .ui file MUST BE IN THE SAME FOLDER AS THIS .PY FILE
-        self.ui = loadUi('pomoduro.ui', self)   #<======= this line must be changed to your .UI file!
+
+        self.ui = loadUi('pomoduro.ui', self)
         
         self.my_qtimer = None
         self.start = False
@@ -26,9 +23,7 @@ class MyForm(QMainWindow):
         self.ui.pushButton5.clicked.connect(self.fiveMinutes)
         self.ui.pushButton10.clicked.connect(self.tenMinutes)
         self.ui.pushButton15.clicked.connect(self.fifteenMinutes)
-        # add code here to connect the pushButton widgets to your methods.
-        # for this first project three empty methods are already created.
-        # you are responsible for connecting the clicked signal from your widgets
+
         self.show()   # this line shows the .ui file after all the Widget's signals are connected.
 
     def menuBackgroundMethod(self):
@@ -47,7 +42,9 @@ class MyForm(QMainWindow):
         self.showtime()
     
     def tenMinutes(self):
-        pass
+        self.count = 600
+        self.timer_start()
+        self.showtime()
     
     def fifteenMinutes(self):
         pass
@@ -81,8 +78,6 @@ class MyForm(QMainWindow):
         QApplication.instance().quit()
 
 
-
-# the code below should not be changed and is constant for all GUI programs
 if __name__=="__main__":    
     app = QApplication(sys.argv)
     w = MyForm()
