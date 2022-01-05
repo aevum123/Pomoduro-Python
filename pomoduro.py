@@ -1,5 +1,6 @@
 import sys                        # needed for the sys.argv passed to QApplication below (command line arguments)
 import time
+import datetime
 
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QDialog, QApplication, QColorDialog, QMainWindow
@@ -15,7 +16,8 @@ class MyForm(QMainWindow):
         # or rename the provided gui_template.ui to your own file and change name
         # the .ui file MUST BE IN THE SAME FOLDER AS THIS .PY FILE
         self.ui = loadUi('pomoduro.ui', self)   #<======= this line must be changed to your .UI file!
-
+        
+        self.my_qtimer = None
         self.start = False
         self.count = 0
 
@@ -40,9 +42,9 @@ class MyForm(QMainWindow):
             self.setPalette(pal)
     
     def fiveMinutes(self):
-        self.count = 1000
-        self.showtime()
+        self.count = 300
         self.timer_start()
+        self.showtime()
     
     def tenMinutes(self):
         pass
@@ -52,28 +54,29 @@ class MyForm(QMainWindow):
 
 
     def timer_start(self):
+        self.start = True
         self.my_qtimer = QtCore.QTimer(self)
-        #self.my_qtimer.timeout.connect(self.timer_timeout)
+        self.my_qtimer.timeout.connect(self.timer_action)
         self.my_qtimer.start(1000)
         
     def showtime(self):
         if self.start:
-            self.count =- 1
+            self.count -= 1
             
         if self.count == 0:
             self.start = False
             self.labelprint.setText("Complete")
-            
-        if self.start:
-            text = str(self.count / 10) + " seconds"
-            self.labelprint.setText(text)
     
     def start_action(self):
         self.start = True
         
         if self.count == 0:
             self.start = False
-            
+    
+    def timer_action(self):
+        self.labelprint.setText(str(datetime.timedelta(seconds=self.count)))
+        self.count -= 1
+        
     def exitMethod(self):
         QApplication.instance().quit()
 
