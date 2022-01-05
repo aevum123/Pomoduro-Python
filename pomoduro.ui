@@ -50,7 +50,7 @@
      <string>10 Minutes</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton5_3">
+   <widget class="QPushButton" name="pushButton15">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -66,6 +66,19 @@
     </property>
     <property name="text">
      <string>15 Minutes</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelprint">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>400</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>
