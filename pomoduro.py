@@ -37,9 +37,13 @@ class MyForm(QMainWindow):
             self.setPalette(pal)
     
     def fiveMinutes(self):
-        self.count = 300
-        self.timer_start()
-        self.showtime()
+        #if self.start = True
+            #set false?
+            self.count = 300
+            self.timer_start()
+            self.showtime()
+            
+        #^put this in a method to be called by all buttons when it works
     
     def tenMinutes(self):
         self.count = 600
